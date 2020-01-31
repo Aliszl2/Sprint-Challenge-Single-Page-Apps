@@ -8,6 +8,18 @@ import SearchForm from "./SearchForm";
 export default function CharacterList() {
   // TODO: Add useState to track data from useEffect
   const [chars, fetchChars] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
+
+
+  const searchChanged = event => {
+    setSearchInput(event.target.value);
+  };
+
+  // const filteredChars = chars.filter(characters => 
+  //   characters.name.toLowerCase().includes(searchInput.toLowerCase())
+  // )
+  // console.log(searchInput);
+
   useEffect(() => {
     // TODO: Add API Request here - must run in `useEffect`
     //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
@@ -15,8 +27,8 @@ export default function CharacterList() {
     axios
       .get("https://rickandmortyapi.com/api/character")
       .then(response => {
-        console.log("Charachters: ", response.data);
-        console.log("Charachters: ", response.data.results);
+        console.log("Character data: ", response.data);
+        console.log("Characters: ", response.data.results);
         fetchChars(response.data.results);
       })
       .catch(error => {
@@ -27,8 +39,14 @@ export default function CharacterList() {
   return (
     <div className="CardContainer">
       {/* < search form component> */}
-      <SearchForm />
-      {chars.map(character => {
+      <SearchForm 
+      searchInput={searchInput}
+      setSearchInput={setSearchInput}
+      searchChanged={searchChanged}
+      />
+      {chars.filter(characters => 
+    characters.name.toLowerCase().includes(searchInput.toLowerCase())
+  ).map(character => {
         return (
           <CharacterCard
             key={character.id}

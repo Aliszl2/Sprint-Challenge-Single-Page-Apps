@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import CharacterCard from "./CharacterCard";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import SearchForm from "./SearchForm";
 // import styled from "styled-components";
 
-export default function CharacterList() {
+export default function CharacterList(props) {
   // TODO: Add useState to track data from useEffect
   const [chars, fetchChars] = useState([]);
   const [searchInput, setSearchInput] = useState("");
-  const [location, fetchLocation] = useState([]);
+  // const [location, fetchLocation] = useState([]);
 
 
 
@@ -37,7 +37,7 @@ export default function CharacterList() {
         // console.log("Character data: ", response.data);
         // console.log("Characters: ", response.data.results);
         fetchChars(firstResponse.data.results);
-        fetchLocation(secondResponse.data.results);
+        props.fetchLocation(secondResponse.data.results);
         // fetchLocation(thirdResponse.data.results);
 
       })).catch(error => {

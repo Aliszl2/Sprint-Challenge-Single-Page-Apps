@@ -1,24 +1,24 @@
-import React from "react";
+import React,{useState} from "react";
 import Header from "./components/Header.js";
 import CharacterList from "./components/CharacterList";
 import { Route } from "react-router-dom";
 import WelcomePage from "./components/WelcomePage";
 import LocationsList from "./components/LocationsList";
-import CharacterCard from "./components/CharacterCard.js";
+// import CharacterCard from "./components/CharacterCard.js";
 
 // import CharacterCard from "./CharacterCard";
 
 export default function App() {
 
-  // const [location, fetchLocation] = useState([]);
+  const [location, fetchLocation] = useState([]);
   return (
     <div>
       <Header />
       {/* <WelcomePage /> */}
 
       <Route exact path="/" render={WelcomePage} />
-      <Route exact path="/CharacterList" component={CharacterList} />
-      <Route exact path="/LocationsList" component={LocationsList} />
+      <Route exact path="/CharacterList" render={(props)=><CharacterList{...props} location={location} fetchLocation={fetchLocation}/>} />
+      <Route exact path="/LocationsList" render={(props)=><LocationsList{...props} location={location} fetchLocation={fetchLocation}/>}/>
 
       {/* <Route
         exact

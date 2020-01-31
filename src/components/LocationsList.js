@@ -1,29 +1,38 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import LocationCard from "./LocationCard";
-import axios from "axios";
-import { Link } from "react-router-dom";
+// import axios from "axios";
+// import { Link } from "react-router-dom";
 // import SearchForm from "./SearchForm";
 
-export default function LocationsList() {
-
+export default function LocationsList(props) {
+console.log(props);
     const [chars, fetchChars] = useState([]);
     const [searchInput, setSearchInput] = useState("");
-    const [location, fetchLocation] = useState([]);
-    
+                return (
+            <div>
+              <LocationCard 
+              key={props.location.id}
+              name={props.location.name}
+              dimension={props.location.dimension}
+              resident={props.location.resident}
+              species={props.location.species}
+              />
+            </div>
+        
+          )
+//     {props.location.map(character => {
+//   return (
+//     <div>
+//       <LocationCard 
+//       key={props.location.id}
+//       name={props.location.name}
+//       dimension={props.location.dimension}
+//       resident={props.location.resident}
+//       species={props.location.species}
+//       />
+//     </div>
 
-  return (
-    <div>
-      <LocationCard 
-      key={location.id}
-      name={location.name}
-      dimension={location.dimension}
-      resident={location.resident}
-      species={location.species}
-      />
-    </div>
-
-
-  );
+//   )})};
 }
 
 // import styled from "styled-components";

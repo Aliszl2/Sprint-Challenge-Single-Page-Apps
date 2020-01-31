@@ -16,6 +16,11 @@ export default function Header() {
           <a href="">Characters</a>
         </Link>
       </div>
+      <div>
+      <Link to={`/LocationsList`}>
+          <a href="">Locations</a>
+        </Link>
+      </div>
     </header>
   );
 }

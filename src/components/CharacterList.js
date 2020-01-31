@@ -33,10 +33,13 @@ export default function CharacterList() {
     ]).then(axios.spread((firstResponse, secondResponse, thirdResponse) => {
         console.log(firstResponse.data)
         console.log(secondResponse.data)
-        console.log(thirdResponse.data);
+        // console.log(thirdResponse.data);
         // console.log("Character data: ", response.data);
         // console.log("Characters: ", response.data.results);
         fetchChars(firstResponse.data.results);
+        fetchLocation(secondResponse.data.results);
+        // fetchLocation(thirdResponse.data.results);
+
       })).catch(error => {
         console.log("the data was not returned", error);
       });

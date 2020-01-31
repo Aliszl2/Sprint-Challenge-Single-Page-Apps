@@ -9,6 +9,8 @@ import CharacterCard from "./components/CharacterCard.js";
 // import CharacterCard from "./CharacterCard";
 
 export default function App() {
+
+  // const [location, fetchLocation] = useState([]);
   return (
     <div>
       <Header />
@@ -16,6 +18,7 @@ export default function App() {
 
       <Route exact path="/" render={WelcomePage} />
       <Route exact path="/CharacterList" component={CharacterList} />
+      <Route exact path="/LocationsList" component={LocationsList} />
 
       {/* <Route
         exact

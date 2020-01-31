@@ -9,6 +9,8 @@ export default function CharacterList() {
   // TODO: Add useState to track data from useEffect
   const [chars, fetchChars] = useState([]);
   const [searchInput, setSearchInput] = useState("");
+  const [location, fetchLocation] = useState([]);
+
 
 
   const searchChanged = event => {
@@ -24,14 +26,18 @@ export default function CharacterList() {
     // TODO: Add API Request here - must run in `useEffect`
     //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
     console.log("CharacterList component mounted");
-    axios
-      .get("https://rickandmortyapi.com/api/character")
-      .then(response => {
-        console.log("Character data: ", response.data);
-        console.log("Characters: ", response.data.results);
-        fetchChars(response.data.results);
-      })
-      .catch(error => {
+    axios.all([
+      axios.get("https://rickandmortyapi.com/api/character"),
+    axios.get("https://rickandmortyapi.com/api/location"),
+    axios.get("https://rickandmortyapi.com/api/episode")
+    ]).then(axios.spread((firstResponse, secondResponse, thirdResponse) => {
+        console.log(firstResponse.data)
+        console.log(secondResponse.data)
+        console.log(thirdResponse.data);
+        // console.log("Character data: ", response.data);
+        // console.log("Characters: ", response.data.results);
+        fetchChars(firstResponse.data.results);
+      })).catch(error => {
         console.log("the data was not returned", error);
       });
   }, []);

@@ -17,6 +17,3 @@ export default function SearchForm(props) {
   );
 }
 
-  // let searchfield=document.getElementById("search-bar");
-  // console.log(searchfield);
-  // searchfield.onsearch = function() {console.log("hi")};

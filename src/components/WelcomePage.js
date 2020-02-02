@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function WelcomePage() {
   return (
@@ -6,10 +7,23 @@ export default function WelcomePage() {
       <header>
         <h1>Welcome to the ultimate fan site!</h1>
         <img
+          width="80%"
           className="main-img"
           src="https://rickandmortyapi.com/api/character/avatar/1.jpeg"
           alt="rick"
         />
+        <div className="navlinks">
+          <div>
+            <Link to={`/`}>
+              <a href="">Home</a>
+            </Link>
+          </div>
+          <div>
+            <Link to={`/about`}>
+              <a href="">Characters</a>
+            </Link>
+          </div>
+        </div>
       </header>
     </section>
   );

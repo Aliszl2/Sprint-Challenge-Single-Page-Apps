@@ -28,6 +28,7 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 - [ ]  Explain benefit(s) using `client-side routing`?
 
 > Answer:
+Client side routing is faster as it does not have to make a new request and reload all the HTML each time a page changes.
 
 ## Project Set Up
 
